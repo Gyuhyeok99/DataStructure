@@ -106,7 +106,7 @@ int main() {
             cin >> x;
             linkedList.addBack(x);
         }else if(cmd == "showList"){
-            linkedList.showList()
+            linkedList.showList();
         }
     }
 }
