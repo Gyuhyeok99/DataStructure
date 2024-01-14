@@ -5,7 +5,7 @@ typedef int Elem;
 class Node {
 private:
     Elem elem;
-    Node* next;
+    Node* next = NULL;
 
     friend class LinkedList;
 };
@@ -58,6 +58,31 @@ public:
         }
         return e;
     }
+
+    void addBack(const Elem& elem) {
+        Node* v = new Node;
+        v->elem = elem;
+        if(empty()) {
+            head = tail = v;
+        }
+        else {
+            tail->next = v;
+            tail = v;
+        }
+    }
+
+    void showList() const {
+        if(empty()) {
+            cout << -1 << endl;
+            return;
+        }
+        Node* cur = head;
+        while(cur != NULL) {
+            cout << cur->elem << ' ';
+            cur = cur->next;
+        }
+        cout << endl;
+    }
 };
 
 int main() {
@@ -77,6 +102,11 @@ int main() {
             cout << linkedList.front() << endl;
         }else if(cmd == "empty"){
             cout << linkedList.empty() << endl;
+        }else if(cmd == "addBack") {
+            cin >> x;
+            linkedList.addBack(x);
+        }else if(cmd == "showList"){
+            linkedList.showList()
         }
     }
 }
